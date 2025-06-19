@@ -14,7 +14,7 @@ class Notifier {
         if (!this.listeners[event].has(listener)) {
             this.listeners[event].add(listener);
             if (typeof listener.onCleanup === 'function') {
-                listener.onCleanup(cleanup); // Subscriber Controlled Cleanup Pattern
+                listener.onCleanup(cleanup); // Self Release Pattern
             }
         }
         return cleanup;

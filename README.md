@@ -1,6 +1,6 @@
 # event-notifier
 
-A minimal event system built on the [Subscriber Controlled Cleanup (SCC) Pattern](https://github.com/huukhanhnguyen/scc-pattern),  
+A minimal event system built on the [Self Release Pattern](https://github.com/huukhanhnguyen/self-release-pattern),  
 which empowers listeners to handle their own cleanup automatically.
 
 ## Install
