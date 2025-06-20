@@ -1,6 +1,6 @@
 # event-notifier
 
-A minimal event system built on the [Self Release Pattern](https://github.com/huukhanhnguyen/self-release-pattern),  
+A minimal event system built on the [Subscriber-Controlled Pattern](https://github.com/huukhanhnguyen/subscriber-controlled-pattern),  
 which empowers listeners to handle their own cleanup automatically.
 
 ## Install
