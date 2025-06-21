@@ -1,6 +1,6 @@
 {
   "name": "event-notifier",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Minimal event system with subscriber controlled cleanup",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
