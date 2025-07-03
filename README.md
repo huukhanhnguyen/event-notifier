@@ -12,7 +12,7 @@ npm install event-notifier
 > Or use directly via CDN:
 > 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/event-notifier@1/dist/index.umd.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/event-notifier@1.0.2/dist/index.global.js"></script>
 <script>
   const notifier = new EventNotifier(); // Global name in UMD
 </script>
@@ -45,20 +45,47 @@ notifier.notify('userLogin', 'User logged in!');
 Adds a listener to an event.  
 If `listener.onCleanup` exists, it's called with a release function.
 
-### `addOnceListener(event: string, listener: function)`
-
-Adds a listener that runs once, then unregisters automatically.
-
 ### `removeListener(event: string, listener: function)`
 
 Manually removes a specific listener.
 
-### `removeAllListeners(event?: string)`
-
-Clears all listeners. Pass an event name to clear only that event.
 
 ### `notify(event: string, ...args: any[])`
 
 Triggers all listeners for the given event.  
+## Tutorial 
+### How add listener call once time
 
+```js
+import Notifier from 'event-notifier';
+
+const notifier = new Notifier();
+
+function listener(data) {
+  console.log('Received:', data);
+}
+
+const wrapper = (data) => {
+  notifier.removeListener('userLogin', wrapper);
+  listener(data);
+};
+
+notifier.addListener('userLogin', wrapper);
+
+notifier.notify('userLogin', 'User logged in!');
+notifier.notify('userLogin', 'Will not be called again');
+
+```
+
+## TypeScript
+```ts
+import type { Listener } from 'event-notifier';
+```
+> Here is the type definition for reference only
+
+```ts
+type Listener = ((...args: any[]) => void) & {
+  onCleanup?: (release: () => void) => void;
+};
+```
 License MIT © [Khánh Nguyễn](https://github.com/huukhanhnguyen)

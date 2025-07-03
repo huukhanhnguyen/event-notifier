@@ -1,21 +1,24 @@
 {
   "name": "event-notifier",
-  "version": "1.0.1",
+  "version": "1.0.4",
   "description": "Minimal event system with subscriber controlled cleanup",
   "main": "dist/index.cjs.js",
-  "module": "dist/index.esm.js",
+  "module": "dist/index.js",
   "types": "dist/index.d.ts",
   "type": "module",
   "exports": {
     ".": {
-      "import": "./dist/index.esm.js",
+      "import": "./dist/index.js",
       "require": "./dist/index.cjs.js"
     }
   },
   "scripts": {
-    "build": "rollup -c",
+    "format": "prettier \"src/**/*.ts\" \"tests/**/*.ts\" --write",
+    "lint": "eslint src tests --ext .ts",
+    "build": "npm run check && tsup",
+    "check": "npm run format && npm run lint && npm run test",
     "test": "vitest",
-    "prepublishOnly": "npm run test && npm run build"
+    "prepublishOnly": "npm run build"
   },
   "keywords": [
     "event",
@@ -28,14 +31,18 @@
   "license": "MIT",
   "repository": "git+https://github.com/huukhanhnguyen/event-notifier.git",
   "devDependencies": {
-    "@rollup/plugin-terser": "^0.4.4",
-    "rollup": "^4.44.0",
+    "@typescript-eslint/eslint-plugin": "^8.35.1",
+    "@typescript-eslint/parser": "^8.35.1",
+    "eslint": "^9.30.0",
+    "prettier": "^3.6.2",
+    "tsup": "^8.5.0",
+    "typescript": "^5.8.3",
     "vitest": "^3.2.4"
   },
   "files": [
     "dist",
     "README.md"
   ],
-  "unpkg": "dist/index.umd.js",
-  "jsdelivr": "dist/index.umd.js"
+  "unpkg": "dist/index.global.js",
+  "jsdelivr": "dist/index.global.js"
 }
