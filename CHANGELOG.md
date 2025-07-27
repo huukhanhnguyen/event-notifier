@@ -1,6 +1,11 @@
 # Changelog
 This project follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/)  
 and [Semantic Versioning](https://semver.org/).
+## [1.0.5] – 2025-07-27
+
+### Changed
+- `Listener` type allow any arguments
+- listener.onCleanup rename to listener.afterSubscribe 
 ## [1.0.4] – 2025-07-2
 ### Removed
 - `addOnceListener` helper — simplified in favor of a manual wrapping pattern (see updated tutorial).

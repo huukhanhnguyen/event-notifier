@@ -10,14 +10,14 @@ var Notifier = class {
     if (!this._listeners[event]) {
       this._listeners[event] = /* @__PURE__ */ new Set();
     }
-    const cleanup = () => this.removeListener(event, listener);
+    const unsubscribe = () => this.removeListener(event, listener);
     if (!this._listeners[event].has(listener)) {
       this._listeners[event].add(listener);
-      if (typeof listener.onCleanup === "function") {
-        listener.onCleanup(cleanup);
+      if (typeof listener.afterSubscribe === "function") {
+        listener.afterSubscribe(unsubscribe);
       }
     }
-    return cleanup;
+    return unsubscribe;
   }
   removeListener(event, listener) {
     if (typeof event !== "string" || typeof listener !== "function") {

@@ -1,5 +1,5 @@
-type Listener = ((..._args: unknown[]) => void) & {
-    onCleanup?: (_release: () => void) => void;
+type Listener = ((...args: any[]) => any) & {
+    afterSubscribe?: (unsubscribe: () => void) => void;
 };
 declare class Notifier {
     private _listeners;

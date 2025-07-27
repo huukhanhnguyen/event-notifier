@@ -25,15 +25,15 @@ describe("Notifier", () => {
     expect(spy).not.toHaveBeenCalled();
   });
 
-  it("should trigger onCleanup when listener is registered", () => {
+  it("should trigger afterSubscribe when listener is registered", () => {
     const notifier = new Notifier();
-    const onCleanup = vi.fn();
+    const afterSubscribe = vi.fn();
 
     const fn: Listener = () => {};
-    fn.onCleanup = onCleanup;
+    fn.afterSubscribe = afterSubscribe;
 
     const cleanup = notifier.addListener("destroy", fn);
-    expect(onCleanup).toHaveBeenCalled();
+    expect(afterSubscribe).toHaveBeenCalled();
     cleanup(); // remove to verify no side effect
   });
 });

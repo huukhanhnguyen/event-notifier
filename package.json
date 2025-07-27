@@ -1,6 +1,6 @@
 {
   "name": "event-notifier",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Minimal event system with subscriber controlled cleanup",
   "main": "dist/index.cjs.js",
   "module": "dist/index.js",
@@ -13,10 +13,9 @@
     }
   },
   "scripts": {
-    "format": "prettier \"src/**/*.ts\" \"tests/**/*.ts\" --write",
     "lint": "eslint src tests --ext .ts",
     "build": "npm run check && tsup",
-    "check": "npm run format && npm run lint && npm run test",
+    "check": "npm run lint && npm run test",
     "test": "vitest",
     "prepublishOnly": "npm run build"
   },
@@ -34,7 +33,6 @@
     "@typescript-eslint/eslint-plugin": "^8.35.1",
     "@typescript-eslint/parser": "^8.35.1",
     "eslint": "^9.30.0",
-    "prettier": "^3.6.2",
     "tsup": "^8.5.0",
     "typescript": "^5.8.3",
     "vitest": "^3.2.4"
